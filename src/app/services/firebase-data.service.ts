@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { HttpClient } from '@angular/common/http';
 import { NASDAQ_COMPANY_LIST } from '../data/naqdaq_company_list';
 import { CompanyTickerModel } from '../model/company-ticker.model';
 
