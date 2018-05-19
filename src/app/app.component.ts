@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { UserService } from './services/user.service';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,23 +13,24 @@ import { ListPage } from '../pages/list/list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  public rootPage: any;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
 
-  constructor(public platform: Platform, 
-    public statusBar: StatusBar, 
-    public splashScreen: SplashScreen) {
+  constructor(public platform: Platform,
+              public statusBar: StatusBar,
+              public splashScreen: SplashScreen,
+              public userSevice: UserService) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      {title: 'Home', component: HomePage},
+      {title: 'List', component: ListPage}
     ];
 
     // Save all nasdaq companies to db
-   // this.firebaseDataService.storeInfoToDatabase();
+    // this.firebaseDataService.storeInfoToDatabase();
   }
 
   initializeApp() {
@@ -37,6 +39,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.rootPage = HomePage;
     });
   }
 

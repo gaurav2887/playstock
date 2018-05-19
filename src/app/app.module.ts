@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
@@ -12,6 +12,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { HttpClientModule } from '@angular/common/http';
 import { FirebaseDataService } from './services/firebase-data.service';
+import { UserService } from './services/user.service';
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -24,6 +25,12 @@ export const firebaseConfig = {
 };
 
 export const ALPHA_VINTAGE_KEY = "ZCPBSKHC9PLX9QTN";
+
+const LOAD_USER = (firebaseDataService: FirebaseDataService) => {
+  return () => {
+    return firebaseDataService.initUser();
+  };
+};
 
 @NgModule({
   declarations: [
@@ -39,16 +46,18 @@ export const ALPHA_VINTAGE_KEY = "ZCPBSKHC9PLX9QTN";
     HttpClientModule
   ],
   bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    HomePage,
-    ListPage
-  ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FirebaseDataService
+    UserService,
+    FirebaseDataService,
+    {provide: APP_INITIALIZER, useFactory: LOAD_USER, deps: [FirebaseDataService], multi: true},
+  ],
+  entryComponents: [
+    MyApp,
+    HomePage,
+    ListPage
   ]
 })
 export class AppModule {}
