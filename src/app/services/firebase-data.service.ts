@@ -22,7 +22,7 @@ export class FirebaseDataService {
   initUser(){
     if(environment.mode === 'development') {
       return this.afDB.object('/users/playstock').valueChanges().subscribe( (data) => {
-        return this.userService.user = data;
+         this.userService.user = data;
       });
     }
   }
