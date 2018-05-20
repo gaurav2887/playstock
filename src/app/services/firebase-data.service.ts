@@ -4,6 +4,7 @@ import { NASDAQ_COMPANY_LIST } from '../data/naqdaq_company_list';
 import { CompanyTickerModel } from '../model/company-ticker.model';
 import { environment } from '@app/env';
 import { UserService } from './user.service';
+import { User } from '../model/user.model';
 
 @Injectable()
 export class FirebaseDataService {
@@ -21,7 +22,7 @@ export class FirebaseDataService {
 
   initUser(){
     if(environment.mode === 'development') {
-      return this.afDB.object('/users/playstock').valueChanges().subscribe( (data) => {
+      return this.afDB.object('/users/playstock').valueChanges().subscribe( (data: User) => {
          this.userService.user = data;
       });
     }
