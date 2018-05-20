@@ -1,3 +1,19 @@
 page-home {
+    .profit {
+        color:green;
+    }
 
+    .loss {
+        color: red;
+    }
+
+    ion-note {
+        font-size: 0.8em;
+        // align-self: flex-start;
+        // margin-top: 14px;
+      }
+
+    .price {
+        font-weight: bold;
+    }
 }
