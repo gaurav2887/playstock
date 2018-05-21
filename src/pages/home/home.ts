@@ -4,6 +4,7 @@ import { environment } from '@app/env';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Company } from 'app/model/company.model';
 import { HttpClient } from '@angular/common/http';
+import { CompNewsPage } from '../comp-news/comp-news';
 
 @Component({
   selector: 'page-home',
@@ -29,6 +30,9 @@ export class HomePage {
           this.watchlist.push(value);
         })
     });
-    
+  }
+
+  displayCompNews(compSymbol: string) {
+    this.navCtrl.push(CompNewsPage, {symbol: compSymbol});
   }
 }

@@ -13,6 +13,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { FirebaseDataService } from './services/firebase-data.service';
 import { UserService } from './services/user.service';
+import { CompNewsPage } from '../pages/comp-news/comp-news';
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -36,7 +37,8 @@ const LOAD_USER = (firebaseDataService: FirebaseDataService) => {
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    CompNewsPage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,8 @@ const LOAD_USER = (firebaseDataService: FirebaseDataService) => {
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    CompNewsPage
   ]
 })
 export class AppModule {}
