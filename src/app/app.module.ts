@@ -14,8 +14,6 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { FirebaseDataService } from './services/firebase-data.service';
 import { UserService } from './services/user.service';
 import { NewsPage } from '../pages/news/news';
-import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
-const config: SocketIoConfig = { url: 'https://ws-api.iextrading.com/1.0/tops', options: {} };
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -45,7 +43,6 @@ const LOAD_USER = (firebaseDataService: FirebaseDataService) => {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    SocketIoModule.forRoot(config),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     HttpClientModule,
