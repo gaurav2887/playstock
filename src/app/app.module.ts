@@ -10,9 +10,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { FirebaseDataService } from './services/firebase-data.service';
 import { UserService } from './services/user.service';
+import { NewsPage } from '../pages/news/news';
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+const config: SocketIoConfig = { url: 'https://ws-api.iextrading.com/1.0/tops', options: {} };
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -36,14 +39,17 @@ const LOAD_USER = (firebaseDataService: FirebaseDataService) => {
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    NewsPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    SocketIoModule.forRoot(config),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpClientJsonpModule
   ],
   bootstrap: [IonicApp],
   providers: [
@@ -57,7 +63,8 @@ const LOAD_USER = (firebaseDataService: FirebaseDataService) => {
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    NewsPage
   ]
 })
 export class AppModule {}
