@@ -3,26 +3,20 @@ var fs = require('fs');
 var path = require('path');
 var useDefaultConfig = require('@ionic/app-scripts/config/webpack.config.js');
 
+// Use below for more environments and pass read env from custom Env
+// Ex: var env = process.env.MY_ENV;
+// Ref: Issue #2 on github for links
 var env = process.env.IONIC_ENV;
 
 console.log('IONIC ENV: '+process.env.IONIC_ENV);
-useDefaultConfig.dev.resolve.alias = {
-  "@app/env": path.resolve(environmentPath(env))
-};
 
-// if(env == 'dev') {
-//   useDefaultConfig.dev.resolve.alias = {
-//     "@app/env": path.resolve(environmentPath('dev'))
-//   };
-// } else if(env == 'prod') {
-//   useDefaultConfig.prod.resolve.alias = {
-//     "@app/env": path.resolve(environmentPath('prod'))
-//   };
-// }
+  useDefaultConfig.dev.resolve.alias = {
+    "@app/env": path.resolve(environmentPath(env))
+  };
 
-// useDefaultConfig[env].resolve.alias = {
-//   "@app/env": path.resolve(environmentPath(env))
-// };
+  useDefaultConfig.prod.resolve.alias = {
+    "@app/env": path.resolve(environmentPath('prod'))
+  };
 
 
 // if (env !== 'prod' && env !== 'dev') {
