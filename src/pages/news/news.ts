@@ -7,8 +7,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: 'news.html'
 })
 export class NewsPage {
-
-    news: any[];
+  news: any[];
   constructor(public navCtrl: NavController,
   public http: HttpClient) {}
 
@@ -19,7 +18,6 @@ export class NewsPage {
   
   getMarketOverview() {
     this.http.jsonp('https://api.iextrading.com/1.0/stock/market/overview','callback').subscribe((data:any) => {
-        console.log(data.news);
         this.news = data.news;
     });
   }
