@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { environment } from '@app/env';
 import { Company } from 'app/model/company.model';
 import { HttpClient } from '@angular/common/http';
 import { CompNewsPage } from '../comp-news/comp-news';
