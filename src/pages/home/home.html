@@ -11,7 +11,7 @@
   <ion-list>
       <ion-item-sliding *ngFor="let company of watchlist">
     <ion-item>
-      <h3>{{ company.symbol }}</h3>
+      <h3 (click)="displayCompNews(company.symbol)">{{ company.symbol }}</h3>
       <p>{{ company.companyName }}</p>
       <h2 class="price" item-right>${{ company.latestPrice }}</h2>
       <ion-note class="{{ company.changePercent>0?'profit':'loss' }}" item-end>{{ company.changePercent | number: '1.2-2'}}%</ion-note>
