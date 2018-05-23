@@ -22,13 +22,13 @@ export class UserService {
         if (environment.mode === 'development') {
           this.user = {userDeviceId: 'playstock'};
           this.storeDeviceIdToStorage('playstock');
-          return this.afDB.database.ref('users').child( 'playstock').set({userDeviceId: 'playstock'});
+          return this.afDB.object('users/playstock').set(this.user);
         }
         this.uniqueDeviceID.get()
           .then((uuid: any) => {
             this.storeDeviceIdToStorage(uuid);
             this.user = {userDeviceId: uuid};
-            return this.afDB.object('users').set(uuid);
+            return this.afDB.object(`users/${uuid}`).set(this.user);
           })
           .catch((error: any) => console.log(error));
       }
