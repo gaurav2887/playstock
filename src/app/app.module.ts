@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
@@ -14,6 +14,9 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { FirebaseDataService } from './services/firebase-data.service';
 import { UserService } from './services/user.service';
 import { CompNewsPage } from '../pages/comp-news/comp-news';
+import { NewsPage } from '../pages/news/news';
+import { IonicStorageModule } from '@ionic/storage';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -27,23 +30,19 @@ export const firebaseConfig = {
 
 export const ALPHA_VINTAGE_KEY = "ZCPBSKHC9PLX9QTN";
 
-const LOAD_USER = (firebaseDataService: FirebaseDataService) => {
-  return () => {
-    return firebaseDataService.initUser();
-  };
-};
-
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    CompNewsPage
+    CompNewsPage,
+    NewsPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
+    IonicStorageModule.forRoot(),
     AngularFireDatabaseModule,
     HttpClientModule,
     HttpClientJsonpModule
@@ -55,13 +54,14 @@ const LOAD_USER = (firebaseDataService: FirebaseDataService) => {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserService,
     FirebaseDataService,
-    {provide: APP_INITIALIZER, useFactory: LOAD_USER, deps: [FirebaseDataService], multi: true},
+    UniqueDeviceID
   ],
   entryComponents: [
     MyApp,
     HomePage,
     ListPage,
-    CompNewsPage
+    CompNewsPage,
+    NewsPage
   ]
 })
 export class AppModule {}
