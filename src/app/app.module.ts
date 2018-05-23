@@ -13,6 +13,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { FirebaseDataService } from './services/firebase-data.service';
 import { UserService } from './services/user.service';
+import { NewsPage } from '../pages/news/news';
 import { IonicStorageModule } from '@ionic/storage';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 
@@ -32,7 +33,8 @@ export const ALPHA_VINTAGE_KEY = "ZCPBSKHC9PLX9QTN";
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    NewsPage
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ export const ALPHA_VINTAGE_KEY = "ZCPBSKHC9PLX9QTN";
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    NewsPage
   ]
 })
 export class AppModule {}

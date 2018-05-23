@@ -1,0 +1,11 @@
+<ion-content>
+
+    <ion-list>
+        <ion-list-header>News</ion-list-header>
+        <ion-card *ngFor="let singleNews of news">
+            <ion-card-content>
+                <a target="_blank" href="{{ singleNews.url }}">{{ singleNews.headline }}</a>
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
+</ion-content>
