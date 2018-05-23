@@ -10,7 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { FirebaseDataService } from './services/firebase-data.service';
 import { UserService } from './services/user.service';
 import { IonicStorageModule } from '@ionic/storage';
@@ -40,7 +40,8 @@ export const ALPHA_VINTAGE_KEY = "ZCPBSKHC9PLX9QTN";
     AngularFireModule.initializeApp(firebaseConfig),
     IonicStorageModule.forRoot(),
     AngularFireDatabaseModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpClientJsonpModule
   ],
   bootstrap: [IonicApp],
   providers: [

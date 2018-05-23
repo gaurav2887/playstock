@@ -3,12 +3,25 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Watchlist</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Market Watchlist</h3>
-  Environment:{{mode}}
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+<ion-content>
+  <ion-list>
+      <ion-item-sliding *ngFor="let company of watchlist">
+    <ion-item>
+      <h3>{{ company.symbol }}</h3>
+      <p>{{ company.companyName }}</p>
+      <h2 class="price" item-right>${{ company.latestPrice }}</h2>
+      <ion-note class="{{ company.changePercent>0?'profit':'loss' }}" item-end>{{ company.changePercent | number: '1.2-2'}}%</ion-note>
+    </ion-item>
+    <ion-item-options side="right">
+        <button ion-button color="danger">
+          <ion-icon name="Remove"></ion-icon>
+          Remove
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
