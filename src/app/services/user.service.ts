@@ -20,15 +20,15 @@ export class UserService {
         return Promise.resolve();
       } else {
         if (environment.mode === 'development') {
-          this.user = {userDeviceId: 'playstock'};
-          this.storeDeviceIdToStorage('playstock');
-          return this.afDB.object('users/playstock').set(this.user);
+          this.user = {userDeviceId: environment.localUser};
+          this.storeDeviceIdToStorage(environment.localUser);
+          return this.saveUser(environment.localUser);
         }
         this.uniqueDeviceID.get()
           .then((uuid: any) => {
             this.storeDeviceIdToStorage(uuid);
             this.user = {userDeviceId: uuid};
-            return this.afDB.object(`users/${uuid}`).set(this.user);
+            return this.saveUser(uuid);
           })
           .catch((error: any) => console.log(error));
       }
@@ -37,6 +37,10 @@ export class UserService {
 
   public storeDeviceIdToStorage(deviceId): void {
     this.storage.set('userDeviceId', deviceId);
+  }
+
+  public async saveUser(uuid: string) {
+    return await this.afDB.object(`users/${uuid}`).set({user: this.user});
   }
 
 }

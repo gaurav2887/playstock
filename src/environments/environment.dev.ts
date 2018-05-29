@@ -1,3 +1,4 @@
 export const environment = {
-    mode: 'development'
-  };
+  mode: 'development',
+  localUser: 'playstock'
+};
