@@ -38,6 +38,6 @@ export class WatchlistPage {
   }
 
   displayCompNews(compSymbol: string) {
-    this.navCtrl.push(CompNewsPage, {symbol: compSymbol});
+    this.navCtrl.push('CompNewsPage', {symbol: compSymbol});
   }
 }

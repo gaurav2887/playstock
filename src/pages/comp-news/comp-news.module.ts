@@ -4,10 +4,13 @@ import { CompNewsPage } from './comp-news';
 
 @NgModule({
   declarations: [
-    CompNewsPage,
+    CompNewsPage
   ],
   imports: [
-    IonicPageModule.forChild(CompNewsPage),
+    IonicPageModule.forChild(CompNewsPage)
   ],
+  exports: [
+    CompNewsPage
+  ]
 })
 export class CompNewsPageModule {}

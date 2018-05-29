@@ -4,10 +4,10 @@ import { WatchlistPage } from './watchlist';
 
 @NgModule({
   declarations: [
-    WatchlistPage,
+    WatchlistPage
   ],
   imports: [
-    IonicPageModule.forChild(WatchlistPage),
+    IonicPageModule.forChild(WatchlistPage)
   ],
   exports: [
     WatchlistPage

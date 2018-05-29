@@ -13,11 +13,10 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { FirebaseDataService } from './services/firebase-data.service';
 import { UserService } from './services/user.service';
-import { CompNewsPage } from '../pages/comp-news/comp-news';
 import { NewsPage } from '../pages/news/news';
 import { IonicStorageModule } from '@ionic/storage';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id';
-import { WatchlistPage } from '../pages/watchlist/watchlist';
+import { WatchlistPageModule } from '../pages/watchlist/watchlist.module';
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -36,9 +35,7 @@ export const ALPHA_VINTAGE_KEY = "ZCPBSKHC9PLX9QTN";
     MyApp,
     HomePage,
     ListPage,
-    CompNewsPage,
-    NewsPage,
-    WatchlistPage
+    NewsPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +44,8 @@ export const ALPHA_VINTAGE_KEY = "ZCPBSKHC9PLX9QTN";
     IonicStorageModule.forRoot(),
     AngularFireDatabaseModule,
     HttpClientModule,
-    HttpClientJsonpModule
+    HttpClientJsonpModule,
+    WatchlistPageModule
   ],
   bootstrap: [IonicApp],
   providers: [
@@ -62,7 +60,6 @@ export const ALPHA_VINTAGE_KEY = "ZCPBSKHC9PLX9QTN";
     MyApp,
     HomePage,
     ListPage,
-    CompNewsPage,
     NewsPage
   ]
 })
