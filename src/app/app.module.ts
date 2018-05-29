@@ -17,6 +17,7 @@ import { CompNewsPage } from '../pages/comp-news/comp-news';
 import { NewsPage } from '../pages/news/news';
 import { IonicStorageModule } from '@ionic/storage';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id';
+import { WatchlistPage } from '../pages/watchlist/watchlist';
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -36,7 +37,8 @@ export const ALPHA_VINTAGE_KEY = "ZCPBSKHC9PLX9QTN";
     HomePage,
     ListPage,
     CompNewsPage,
-    NewsPage
+    NewsPage,
+    WatchlistPage
   ],
   imports: [
     BrowserModule,
