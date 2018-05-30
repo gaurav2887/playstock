@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { CompNewsPage } from './comp-news';
+import { WatchlistPage } from './watchlist';
 
 @NgModule({
   declarations: [
-    CompNewsPage
+    WatchlistPage
   ],
   imports: [
-    IonicPageModule.forChild(CompNewsPage)
+    IonicPageModule.forChild(WatchlistPage)
   ],
   exports: [
-    CompNewsPage
+    WatchlistPage
   ]
 })
-export class CompNewsPageModule {}
+export class WatchlistPageModule {}
