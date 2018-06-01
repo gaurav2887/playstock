@@ -5,21 +5,38 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-    <ion-navbar>
-      <ion-title>{{ symbol }} News</ion-title>
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+    <ion-title>{{ symbol }} News</ion-title>
+  </ion-navbar>
+</ion-header>
 
 <ion-content>
-<ion-list *ngFor="let company of compNews">
-  <ion-card>
-    <ion-card-header>
-     <a href="{{ company.url}}"> {{ company.headline }}</a>
-    </ion-card-header>
-    <ion-card-content>
-      {{ company.summary }}
-      <p>{{company.source}}</p>
-    </ion-card-content>
-  </ion-card>
-</ion-list>
+
+  <ion-list>
+    <ion-card *ngFor="let compNews of singleNews">
+      <ion-slides pager>
+        <ion-slide>
+          <ion-card-content>
+            <h2>{{ compNews.headline }}</h2>
+          </ion-card-content>
+          <ion-item>
+            <ion-note>Related: {{ compNews.related }}</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-note item-left>{{compNews.datetime | timeAgo }}</ion-note>
+            <ion-note item-end>Source: {{ compNews.source }}</ion-note>
+          </ion-item>
+        </ion-slide>
+        <ion-slide>
+          <ion-card-content>
+            <h2>{{compNews.summary}}</h2>
+          </ion-card-content>
+          <ion-item>
+            <ion-note item-left>{{compNews.datetime | timeAgo }}</ion-note>
+            <ion-note item-end>Source: {{ compNews.source }}</ion-note>
+          </ion-item>
+        </ion-slide>
+      </ion-slides>
+    </ion-card>
+  </ion-list>
 </ion-content>
