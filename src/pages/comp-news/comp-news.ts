@@ -15,7 +15,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: 'comp-news.html',
 })
 export class CompNewsPage {
-  compNews: any[] = [];
+  singleNews: any[] = [];
   symbol: string;
   constructor(
     public navCtrl: NavController, 
@@ -33,7 +33,7 @@ export class CompNewsPage {
   getCompanyNews() {
     this.http.jsonp('https://api.iextrading.com/1.0/stock/'+this.symbol+'/news','callback').subscribe((data:any[]) => {
         data.forEach((value) => {
-          this.compNews.push(value);
+          this.singleNews.push(value);
         })
     });
   }

@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { CompNewsPage } from './comp-news';
+import { NewsPage } from './news';
 import { TimeAgoModule } from '../shared/timeago.module';
-
 
 @NgModule({
   declarations: [
-    CompNewsPage
+    NewsPage
   ],
   imports: [
-    IonicPageModule.forChild(CompNewsPage),
+    IonicPageModule.forChild(NewsPage),
     TimeAgoModule
   ],
   exports: [
-    CompNewsPage
+    NewsPage
   ]
 })
-export class CompNewsPageModule {}
+export class NewsPageModule {}

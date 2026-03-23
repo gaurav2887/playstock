@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import { CompNewsPage } from '../comp-news/comp-news';
 import { HttpClient } from '@angular/common/http';
 import { Company } from '../../app/model/company.model';
 
